@@ -2,6 +2,16 @@ import { useState } from "react";
 import GamePage from "./guessfirst";
 
 function GetNumber() {
+    const buttonStyle = {
+        minWidth: "80px",
+        maxWidth: "140px",
+        height: "36px",
+    };
+    const inputStyle = {
+        minWidth: "20%",
+        maxWidth: "40%",
+        height: "36px",
+    };
     const [guess, setGuess] = useState("");
     const [start, setStart] = useState(false);
     const [errvalue, seterrvalue] = useState("");
@@ -21,7 +31,7 @@ function GetNumber() {
         <>
             {!start ? (
                 <div style={{ textAlign: 'center' }}>
-                    <h1 style={{fontSize:"30px"}}> Search Number Guessing Game</h1>
+                    <h1 style={{ fontSize: "30px" }}> Search Number Guessing Game</h1>
                     <div>
                         <input
                             type="number"
@@ -30,14 +40,14 @@ function GetNumber() {
                                 setGuess(e.target.value);
                                 seterrvalue("");
                             }}
-                            style={{ width: '10%' }}
+                            style={inputStyle}
                         />
                     </div>
                     <div style={{ margin: '10px' }}>
-                        <button style={{width:'5%'}} onClick={handleEvent}>Go</button>
+                        <button style={buttonStyle} onClick={handleEvent}>Go</button>
                     </div>
 
-                    {errvalue && <p style={{ color: "red" }}>{errvalue}</p>}
+                    {errvalue && <p style={{ color: "red", fontSize: '18px' }}>{errvalue}</p>}
                 </div>
             ) : (
                 <GamePage guess={Number(guess)} />
