@@ -18,7 +18,7 @@ function Guessfirst({ guess }) {
   const [newGame, setNewGame] = useState(false);
 
   const handleEvent = () => {
-    handleMaxEvent();
+    handleMainEvent();
     setIsClicked(true)
   };
 
@@ -36,7 +36,7 @@ function Guessfirst({ guess }) {
     }
   }, [min, max, lastdata])
 
-  const handleMaxEvent = () => {
+  const handleMainEvent = () => {
     if (prodone) return;
 
     const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -45,9 +45,6 @@ function Guessfirst({ guess }) {
     setlastdata(randomNum);
   };
 
-  const handleMinEvent = () => {
-    handleMaxEvent();
-  };
 
   const handleNewGame = () => {
     setNewGame(true)
@@ -74,8 +71,8 @@ function Guessfirst({ guess }) {
 
             {lastvalue !== null && <p>Enter Value: {guess}</p>}
             <div style={{ display: 'flex', justifyContent: "center", gap: '2%' }}>
-              <button style={buttonStyle} onClick={handleMinEvent} disabled={!isClicked}>min</button>
-              <button style={buttonStyle} onClick={handleMaxEvent} disabled={!isClicked}>max</button>
+              <button style={buttonStyle} onClick={handleMainEvent} disabled={!isClicked}>min</button>
+              <button style={buttonStyle} onClick={handleMainEvent} disabled={!isClicked}>max</button>
 
             </div>
             <table style={{
